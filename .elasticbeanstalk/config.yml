@@ -1,12 +1,12 @@
 branch-defaults:
   main:
-    environment: sway-api-dev
+    environment: sway-env
     group_suffix: null
 global:
-  application_name: sway-api
+  application_name: sway
   branch: null
   default_ec2_keyname: aws-eb
-  default_platform: Python 3.8 running on 64bit Amazon Linux 2
+  default_platform: Python 3.7
   default_region: eu-west-1
   include_git_submodules: true
   instance_profile: null
