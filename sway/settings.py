@@ -23,8 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = '3j@-nsd*9-!&q7sk1p5*vmz215*5owy6zwq6$1log)r)@%spo9'
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -62,8 +64,6 @@ MIDDLEWARE = [
 ]
 
 
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'sway.wsgi.application'
 
 # default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-# DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), 
+# DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 
 # if 'RDS_DB_NAME' in os.environ:
 #     DATABASES = {
@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'sway.wsgi.application'
 #             'PORT': os.environ['RDS_PORT'],
 #         }
 #     }
-# else: 
+# else:
 #     DATABASES = {
 #         'default': {
 #             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -126,7 +126,8 @@ WSGI_APPLICATION = 'sway.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+DATABASES = {'default': config(
+    'DATABASE_URL', default=default_dburl, cast=dburl), }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -165,7 +166,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -183,8 +184,3 @@ REST_FRAMEWORK = {
         'jwt_auth.authentication.JWTAuthentication',
     ],
 }
-
-
-
-
-
