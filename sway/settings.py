@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import dotenv
 
 from decouple import config
 from dj_database_url import parse as dburl
@@ -24,9 +25,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = '3j@-nsd*9-!&q7sk1p5*vmz215*5owy6zwq6$1log)r)@%spo9'
-# DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG = True
+# SECRET_KEY = '3j@-nsd*9-!&q7sk1p5*vmz215*5owy6zwq6$1log)r)@%spo9'
+dotenv_file = os.path.join(BASE_DIR, '.env')
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+DEBUG = os.environ['DEBUG']
+# DEBUG = True
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
