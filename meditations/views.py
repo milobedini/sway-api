@@ -5,7 +5,7 @@ from rest_framework.views import Response
 from rest_framework.views import status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-
+from django.db.models import F
 from .models import Meditation
 from .serializers.populated import PopulatedMeditationSerializer
 from .serializers.favourite import FavouriteMeditationSerializer
@@ -29,7 +29,11 @@ class MeditationDetailView(APIView):
 
     def get(self, request, pk):
         meditation = Meditation.objects.get(id=pk)
-        serialized_meditation = PopulatedMeditationSerializer(meditation)
+        meditation.views = F("views") + 1
+        meditation.save(update_fields=["views"])
+        updated_meditation = Meditation.objects.get(id=pk)
+        serialized_meditation = PopulatedMeditationSerializer(
+            updated_meditation)
         return Response(serialized_meditation.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
