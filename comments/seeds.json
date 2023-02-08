@@ -98,5 +98,15 @@
     "article": 22,
     "owner": 1
   }
+},
+{
+  "model": "comments.comment",
+  "pk": 61,
+  "fields": {
+    "text": "We can't give an exact timetable currently, but we are hoping for a Spring 2023 release. We'll keep you updated on here!",
+    "created_at": "2023-01-24T13:50:45.676Z",
+    "article": 26,
+    "owner": 1
+  }
 }
 ]

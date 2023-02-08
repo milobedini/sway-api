@@ -10,6 +10,8 @@ class Article(models.Model):
     views = models.IntegerField(default=0)
     text = models.TextField()
     category = models.CharField(max_length=30, default="Threads")
+    photo = models.CharField(max_length=200, default='')
+
     author = models.ForeignKey(
         "jwt_auth.User", related_name="author", on_delete=models.CASCADE)
 
